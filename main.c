@@ -102,13 +102,13 @@ int main() {
                     ++counter;
                     int f =1;
                     for (int i = 0; i < counter-1; ++i) {
-                        deck [f] = deck [i];
+                        in [f] = deck [i];
                         ++f;
                     }
                     int i = 0;
-                    deck [i] = hand[0];
+                    in [i] = hand[0];
                     hand [0] = " ";
-                    print_status(deck,counter,opcion,hand);
+                    print_status(in,counter,opcion,hand);
                 } else{
                     printf("There is no card in hand, pull first\n");
                     validacion = 1;
@@ -132,7 +132,7 @@ int main() {
                 for (int j = 0; j < counter; ++j) {
                     in[j] = deck[j];
                 }
-                printf("Successfully saved game");
+                printf("Successfully saved game\n");
                 break;
             case 'l':
                 for (int j = 0; j < counter; ++j) {
