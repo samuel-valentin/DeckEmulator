@@ -1,0 +1,3 @@
+C:/Users/Valentin/Documents/GitHub/DeckEmulator/cmake-build-debug/CMakeFiles/DeckEmulator.dir
+C:/Users/Valentin/Documents/GitHub/DeckEmulator/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Valentin/Documents/GitHub/DeckEmulator/cmake-build-debug/CMakeFiles/rebuild_cache.dir
