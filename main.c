@@ -57,7 +57,7 @@ int main() {
     char opcion;
     char* in [5] = {"10","J","Q","K","A"};
     char* deck[5], *hand[1], *stolen[1];
-    int aux, counter =5;
+    int aux, counter =5, validacion=1;
     //Inicializar deck
     for (int i = 0; i < 5; ++i) {
         aux = random_function(i);
@@ -78,42 +78,70 @@ int main() {
                 --counter;
                 //stolen [0] = deck [counter];
                 if (counter == 0){
-                    printf("Ya no  hay mas cartas para retirar");
+                    printf("There are no more cards to pull");
                 }
                 else {
                     hand[0] = deck [counter];
                     print_status(deck,counter,opcion,hand);
+                    validacion = 0;
                 }
                 break;
             case 'd':
-                --counter;
-                hand[0] = deck [counter];
-                print_status(deck,counter,opcion,hand);
+                if (validacion == 0){
+                    hand[0] = " ";
+                    deck [counter] = " ";
+                    print_status(deck,counter,opcion,hand);
+                } else {
+                    printf("There is no card in hand, pull first\n");
+                    validacion = 1;
+                }
                 break;
             case 'b':
-                hand [0] = deck [counter];
-                for (int i = 1; i < counter; ++i) {
-                    deck [i] = deck [i+1];
+                if (validacion==0){
+                    hand [0] = deck [counter];
+                    ++counter;
+                    int f =1;
+                    for (int i = 0; i < counter-1; ++i) {
+                        deck [f] = deck [i];
+                        ++f;
+                    }
+                    int i = 0;
+                    deck [i] = hand[0];
+                    hand [0] = " ";
+                    print_status(deck,counter,opcion,hand);
+                } else{
+                    printf("There is no card in hand, pull first\n");
+                    validacion = 1;
                 }
-                int i = 0;
-                deck [i] = hand[0];
-                print_status(deck,counter,opcion,hand);
                 break;
             case 'e':
                 printf("End of the game");
                 return 0;
                 break;
             case 't':
-
+                if (validacion == 0){
+                    ++counter;
+                    hand [0] = " ";
+                    print_status(deck,counter,opcion,hand);
+                }else{
+                    printf("There is no card in hand, pull first\n");
+                    validacion = 1;
+                }
                 break;
             case 's':
-
+                for (int j = 0; j < counter; ++j) {
+                    in[j] = deck[j];
+                }
+                printf("Successfully saved game");
                 break;
             case 'l':
-
+                for (int j = 0; j < counter; ++j) {
+                    deck [j] = in [j];
+                }
+                printf("Game Loaded\n");
                 break;
             default:
-                printf("invalid letter");
+                printf("Invalid letter\nTry Again");
         }
 
     }
